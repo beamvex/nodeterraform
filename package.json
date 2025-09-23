@@ -1,0 +1,23 @@
+{
+  "name": "terraform",
+  "version": "1.0.0",
+  "description": "",
+  "bin": {
+    "ntf": "index.js"
+  },
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/beamvex/node-terraform.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/beamvex/node-terraform/issues"
+  },
+  "homepage": "https://github.com/beamvex/node-terraform#readme"
+}
