@@ -26,6 +26,7 @@ function compareSemver(a, b) {
 }
 
 function findCachedTerraform(desiredVersion) {
+  
   const baseDir = path.join(os.homedir(), '.ntf');
   try {
     if (!fs.existsSync(baseDir)) return null;
@@ -35,23 +36,7 @@ function findCachedTerraform(desiredVersion) {
       if (fs.existsSync(candidate)) return candidate;
     }
 
-    // Find highest available version that contains a terraform binary
-    const entries = fs.readdirSync(baseDir, { withFileTypes: true })
-      .filter((d) => d.isDirectory())
-      .map((d) => d.name)
-      .filter((name) => /\d+\.\d+\.\d+/.test(name));
-
-    let best = null;
-    for (const ver of entries) {
-      const candidate = path.join(baseDir, ver, 'terraform');
-      if (fs.existsSync(candidate)) {
-        if (!best || compareSemver(ver, best.ver) > 0) {
-          best = { ver, path: candidate };
-        }
-      }
-    }
-
-    return best ? best.path : null;
+    return null;
   } catch (_) {
     return null;
   }

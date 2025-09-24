@@ -23,9 +23,9 @@ try {
 }
 
 // Terraform version to download
-const TERRAFORM_VERSION = '1.13.3';
+const DEFAULT_TERRAFORM_VERSION = '1.13.3';
 
-const DEFAULT_OUTPUT_DIR = path.join(os.homedir(), '.ntf', TERRAFORM_VERSION);
+const BASE_CACHE_DIR = path.join(os.homedir(), '.ntf');
 
 /**
  * Maps detected OS and architecture to Terraform release naming convention
@@ -240,10 +240,10 @@ function downloadFile(url, outputPath) {
 /**
  * Main function to detect OS/arch and download Terraform
  */
-async function downloadTerraform(version = TERRAFORM_VERSION, outputDir = null, extract = true) {
+async function downloadTerraform(version = DEFAULT_TERRAFORM_VERSION, outputDir = null, extract = true) {
     // Default to user's home directory if no output directory specified
     if (!outputDir) {
-        outputDir = DEFAULT_OUTPUT_DIR;
+        outputDir = path.join(BASE_CACHE_DIR, version);
     }
     try {
         console.log('=== Terraform Downloader ===');
