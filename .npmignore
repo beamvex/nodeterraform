@@ -1,0 +1,5 @@
+# Exclude release tooling from the published package
+release.sh
+
+# Exclude local package tarballs
+*.tgz
